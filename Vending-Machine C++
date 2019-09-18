@@ -1,0 +1,87 @@
+#include<iostream>
+
+#include<iomanip>
+
+#include <vector>
+
+using namespace std;
+
+int main(){
+
+	char selection;
+	double counter = 0;
+	int select = 0;
+	do {
+		cout << "Make a selection: " << endl;
+		cout << "d - insert 1$ bill" << endl;
+		cout << "m - view menu" << endl;
+		cout << "s - select an item" << endl;
+		cout << "c - get change" << endl;
+		cin >> selection;
+		switch (selection) {
+		case 'd': counter = counter + 1;
+			cout << "Credit available: $" << fixed << setprecision(2) << counter << endl;
+			break;
+		case 'm':
+			cout << "Available items:" << endl;
+			cout << "(1) KitKat: $2.30" << endl;
+			cout << "(2) Coca-Cola: $1.50" << endl;
+			cout << "(3) Bottle of water: $0.80" << endl;
+			break;
+		case 's':
+			cout << "Insert item number:" << endl;
+			cin >> select;
+			switch (select)
+			{
+			case 1:
+				if (counter < 2.30) {
+					cout << "Insufficient Credit" << endl;
+				}
+				else {
+					counter = counter - 2.30;
+					cout << "enjoy your KitKat " << endl;
+
+				}
+				break;
+			case 2:
+				if (counter < 1.50) {
+					cout << "Insufficient Credit" << endl;
+				}
+				else {
+					counter = counter - 1.50;
+					cout << "enjoy your item " << endl;
+				}
+				break;
+			case 3:
+				if (counter < 0.80) {
+					cout << "Insufficient Credit" << endl;
+				}
+				else {
+					counter = counter - 0.80;
+					cout << "Enjoy your water!" << endl;
+				}
+				break;
+
+			}
+			break;
+		case 'c':
+			if (counter == 0) {
+				cout << "No change\n" << "Goodbye!" << endl;
+			}
+			else {
+				cout << "Your change is: $" << counter << "\n" << "Goodbye!\n" << endl;
+			}
+			
+			break;
+		default:
+			cout << "Invalid selection" << endl << "\n";
+
+
+		}
+
+
+	} while (selection != 'c');
+		
+
+	return (0);
+}
